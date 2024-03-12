@@ -16,14 +16,26 @@
   }
 }
 
+.herobg {
+  background: linear-gradient(90deg, #060853 31.98%, rgba(3, 25, 137, 0.8) 100%);
+}
+
+.button-linear {
+  background: linear-gradient(93.18deg, #1AABF4 0%, #383EE5 63.42%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text-bg {
+  background: linear-gradient(90.26deg, #1AABF4 49.85%, #4646FC 69.07%);
+  background-image: linear-gradient(90.26deg, #1AABF4 49.85%, #4646FC 69.07%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: white
 }
 
 @layer utilities {
