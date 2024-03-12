@@ -1,0 +1,81 @@
+/* Carousel.css */
+
+.carousel {
+    position: relative;
+    width: 80%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.carousel-track-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.carousel-item {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    opacity: 0.5;
+    transform: translateX(-50%) scale(0.8);
+    transition: all 0.5s ease;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    min-height: 300px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    z-index: 2;
+    /* Ensure the active item is above the others */
+}
+
+.carousel-item.prev,
+.carousel-item.next {
+    opacity: 0.5;
+    width: 500px;
+    position: absolute;
+    transform: translateX(0%);
+    top: 0%;
+    z-index: 1;
+}
+
+
+
+.carousel-item.next {
+    transform: translateX(0%);
+    top: 0%;
+    right: 0;
+    z-index: 1;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    /* Above items so they're clickable */
+}
+
+.prev {
+    left: 20px;
+    /* Adjust as needed */
+}
+
+.next {
+    right: 20px;
+}

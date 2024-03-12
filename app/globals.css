@@ -19,7 +19,9 @@
 .herobg {
   background: linear-gradient(90deg, #060853 31.98%, rgba(3, 25, 137, 0.8) 100%);
 }
-
+.subbg{
+  background: linear-gradient(95.01deg, rgba(56, 62, 229, 0.95) 11.74%, rgba(26, 171, 244, 0.95) 100%);
+}
 .button-linear {
   background: linear-gradient(93.18deg, #1AABF4 0%, #383EE5 63.42%);
   display: flex;

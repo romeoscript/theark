@@ -1,3 +1,4 @@
+import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Offer from "@/components/Offer";
 import Resources from "@/components/Resources";
@@ -13,6 +14,7 @@ export default function Home() {
       <Stories />
       <Resources />
       <Sub />
+      <Faq />
     </main>
   );
 }
