@@ -28,6 +28,30 @@
   align-items: center;
   justify-content: center;
 }
+.ant-collapse {
+  border: none;
+}
+.ant-collapse-item{
+  margin: 1rem;
+  border: 1px solid white;
+  border-radius: 10px!important;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white!important;
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-header-text{
+  color: white;
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-collapse .ant-collapse-content{
+  background-color: rgba(255, 255, 255, 0.1)!important;
+  backdrop-filter: blur(10px);
+  color: white!important;
+}
+.ant-collapse-content-box{
+  background-color: rgba(255, 255, 255, 0.1)!important;
+  backdrop-filter: blur(10px);
+  color: white!important;
+}
 .text-bg {
   background: linear-gradient(90.26deg, #1AABF4 49.85%, #4646FC 69.07%);
   background-image: linear-gradient(90.26deg, #1AABF4 49.85%, #4646FC 69.07%);
