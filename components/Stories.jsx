@@ -28,6 +28,10 @@ const Stories = () => {
       <div className='text-center'>
         <h2 className='text-bg text-2xl'>Real Stories, Real Successes</h2>
         <p className='mb-[3rem]'>Explore inspiring tales of success from someof our customers and partners</p>
+        <div className='flex items-center gap-2 justify-center bg-[#F9F9F9] w-[240px] m-auto rounded-[16px] p-[0.5rem]'>
+          <button className='button-linear border-none text-white px-[2rem] py-[0.5rem] rounded-[10px]'> Partners</button>
+          <button>Customers</button>
+        </div>
         <Carousel items={carouselItems} />
       </div>
     </div>
