@@ -22,19 +22,19 @@ const Carousel = ({ items }) => {
 
   return (
     <div className="carousel h-[400px]">
-      <button onClick={goToPrevious} className="prev">&#10094;</button>
+      <button onClick={goToPrevious} className="prev border-[1px] border-[#1AABF4] shadow-md w-[70px] h-[60px] rounded-[20px]">&#10094;</button>
       <div className="carousel-track-container h-full">
         {items.map((item, index) => (
           <div
             key={item.id}
             className={`carousel-item ${index === currentIndex ? 'active' : ''} ${index === currentIndex - 1 ? 'prev' : ''} ${index === currentIndex + 1 ? 'next' : ''}`}
           >
-            <img src={item.img}  className='w-[100px]' alt={item.title} />
+            <img src={item.img}  className='w-[50px] h-[50px] rounded-full' alt={item.title} />
             <p>{item.description}</p>
           </div>
         ))}
       </div>
-      <button onClick={goToNext} className="next">&#10095;</button>
+      <button onClick={goToNext} className="next shadow-md w-[70px] border-[1px] border-[#1AABF4] h-[60px] rounded-[20px]">&#10095;</button>
     </div>
   );
 };
