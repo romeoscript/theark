@@ -1,23 +1,185 @@
-import Faq from "@/components/Faq";
-import Hero from "@/components/Hero";
-import Offer from "@/components/Offer";
-import Resources from "@/components/Resources";
-import Stories from "@/components/Stories";
-import Sub from "@/components/Sub";
-import Image from "next/image";
+import DataTable from "@/components/DataTable";
+
 
 export default function Home() {
-  return (
-    <main>
-      {/* <Hero />
-      <Offer />
-      <Stories />
-    
-      <Sub />
-      <Faq /> */}
-      <div className="pt-[80px]">
-      <Resources />
-      </div>
-    </main>
-  );
+    const data = [
+        {
+            key: '1',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '2',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '3',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '4',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '5',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '6',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '7',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '8',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '9',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '10',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '11',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '12',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '13',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+        {
+            key: '14',
+            address: 'Early Ape Oxfa22...534',
+            buyToken: 'BTC',
+            buyPrice: '50,000',
+            sellToken: 'ETH',
+            sellPrice: '4,000',
+            txnValue: '10,000',
+            chain: 'Ethereum',
+            hash: '0x123...',
+            time: '2020-01-01',
+        },
+    ];
+    return (
+        <main>
+            <div className="pt-[80px]">
+                <figure className="p-[1rem]">
+                    <p className="text-black text-4xl font-bold">Dashboard</p>
+                    <DataTable file={data} />
+                </figure>
+            </div>
+        </main>
+    );
 }

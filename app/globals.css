@@ -19,7 +19,14 @@
   background: linear-gradient(90.34deg, rgba(6, 8, 83, 0.9) -14.35%, rgba(56, 62, 229, 0.9) 88.12%);
 
 }
+.table-row-dark {
+  background: #F9F9F980;
 
+}
+
+.table-row-light {
+  background: #1AABF41A;
+}
 .herobg {
   background: linear-gradient(90deg, #060853 31.98%, rgba(3, 25, 137, 0.8) 100%);
 }
