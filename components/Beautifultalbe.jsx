@@ -1,5 +1,8 @@
+"use client"
 import React from 'react';
-import { Table, Tag, Image } from 'antd';
+import { Table, Tag } from 'antd';
+
+const CustomImage = ({ src }) => <img src={src} alt="Logo" className='w-10 h-10 rounded-full' />;
 
 const columns = [
   {
@@ -16,7 +19,11 @@ const columns = [
     title: 'Logo',
     dataIndex: 'logo',
     key: 'logo',
-    render: (logo) => <Image src={logo} width={30} />,
+    render: (text, record) => (
+        <div>
+            {record.logo ? <img src={record.logo} alt={text} className='w-10 h-10 rounded-full' /> : <div className='w-10 h-10 bg-gray-200 rounded-full'></div>}
+        </div>
+    )
   },
   {
     title: 'Decimals',
