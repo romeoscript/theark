@@ -410,6 +410,7 @@ const PortfolioDashboard = () => {
             />
             </div>
             <Row gutter={[16, 16]}>
+                <h2 className='text-center font-bold text-3xl mx-auto my-[1rem]'>Portfolio Data</h2>
                 <Col span={24}>
                     <Table
                         dataSource={portfolioData.result}
