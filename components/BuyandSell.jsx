@@ -506,24 +506,27 @@ const BuyandSell = () => {
         },
     ];
     return (
-        <div>
-            <h1>DataTable</h1>
-            <h2>Buys</h2>
-            <div className='flex gap-4 justify-between p-[1rem]'>
-                <Table
-                    dataSource={data.buys}
-                    columns={columns}
+        <div className='w-4/5 text-black m-auto'>
 
-                    rowKey={(record, index) => index}
-                />
-                <h2>Sells</h2>
-                <Table
-                    dataSource={data.sells}
-                    columns={columns}
-
-                    rowKey={(record, index) => index}
-                />
-            </div>
+       
+                    <h2 className='text-center font-bold text-3xl text-[green]'>Buys</h2>
+                    <Table
+                        dataSource={data.buys}
+                        columns={columns}
+                        pagination={{ pageSize: 7 }}
+                        rowKey={(record, index) => index}
+                        size="small"
+                    />
+           
+                    <h2 className='text-center font-bold text-3xl text-[red]'>Sells</h2>
+                    <Table
+                        dataSource={data.sells}
+                        columns={columns}
+                        pagination={{ pageSize: 7 }}
+                        rowKey={(record, index) => index}
+                        size="small"
+                    />
+            
         </div>
     )
 }
