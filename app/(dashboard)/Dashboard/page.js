@@ -1,6 +1,7 @@
-"use client"
+'use client'
 import { useState, useEffect } from 'react';
 import DataTable from '@/components/DataTable';
+import Moralis from 'moralis';
 
 export default function Home() {
     const [transactions, setTransactions] = useState([]);
@@ -19,19 +20,16 @@ export default function Home() {
                     "0x941111f2be8ed9b4e0ce7cea556c8e1eee7077c2",
                     "0x162c6c832611dabb9ac90f8f7902a78b3361bbad"
                 ];
-                const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjMyNWUxNzNlLTJiNzUtNGEwYy1hN2Q1LTUzYzRhYTk3OTExMiIsIm9yZ0lkIjoiMzg1Mjk5IiwidXNlcklkIjoiMzk1OTA1IiwidHlwZUlkIjoiNzU0ZTQ5NTEtMGUxZS00ZmQzLWIwZmEtOGQ5MWY2ZmM4MWE3IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MTE3MDgwMDUsImV4cCI6NDg2NzQ2ODAwNX0.fo-tfxq4aB9ucNl6gdcBxTbs_rQCGkKelgtSGFJtcog";
+                 Moralis.start({
+                    apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjMyNWUxNzNlLTJiNzUtNGEwYy1hN2Q1LTUzYzRhYTk3OTExMiIsIm9yZ0lkIjoiMzg1Mjk5IiwidXNlcklkIjoiMzk1OTA1IiwidHlwZUlkIjoiNzU0ZTQ5NTEtMGUxZS00ZmQzLWIwZmEtOGQ5MWY2ZmM4MWE3IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MTE3MDgwMDUsImV4cCI6NDg2NzQ2ODAwNX0.fo-tfxq4aB9ucNl6gdcBxTbs_rQCGkKelgtSGFJtcog"
+                  });
                 const transactionsPromises = addresses.map(async (address) => {
-                    const response = await fetch(`https://deep-index.moralis.io/api/v2.2/wallets/${address}/chains?chain=eth&format=decimal`, {
-                        headers: {
-                            'X-API-Key': apiKey
-                        }
-                    });
-                    const data = await response.json();
-                    return data;
+                    const activeChains = await Moralis.EvmApi?.transaction.getWalletTransactions({ address });
+                    return { address, activeChains };
                 });
+console.warn("transactionsPromises", transactionsPromises)
                 const transactionsData = await Promise.all(transactionsPromises);
-                const allTransactions = transactionsData.flat();
-                setTransactions(allTransactions);
+                setTransactions(transactionsData);
             } catch (error) {
                 console.error("Error fetching transactions:", error);
             }

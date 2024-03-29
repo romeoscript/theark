@@ -1,13 +1,16 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
+import Link from 'next/link';
 
 const columns = [
     {
         title: <span style={{ color: '#1AABF4' }}>ADDRESS</span>,
         dataIndex: 'address',
         key: 'address',
-        render: text => <span style={{ color: '#383EE5' }}>{text}</span>,
+        render: (text, record) => (
+            <Link to={`/address/${text}`} style={{ color: '#383EE5' }}>{text}</Link>
+        ),
     },
     {
         title: <span style={{ color: '#1AABF4' }}>CHAIN</span>,
@@ -20,6 +23,14 @@ const columns = [
         dataIndex: 'hash',
         key: 'hash',
         render: text => <span style={{ color: 'black' }}>{text}</span>,
+    },
+    {
+        title: <span style={{ color: '#1AABF4' }}>Transaction Type</span>,
+        dataIndex: 'transactionType',
+        key: 'transactionType',
+        render: (text, record) => (
+            <span style={{ color: text === 'Buy' ? 'red' : 'green' }}>{text}</span>
+        ),
     },
     {
         title: <span style={{ color: '#1AABF4' }}>TIME</span>,
@@ -41,14 +52,25 @@ const DataTable = ({ file: originalData }) => {
         );
         setData(filteredData);
     }, [searchText, originalData]);
-
     useEffect(() => {
-        const formattedData = originalData.map(item => ({
-            address: item.address,
-             chain: item?.active_chains[0].chain,
-             hash: item?.active_chains[0].last_transaction.transaction_hash,
-             time: item?.active_chains[0].last_transaction.block_timestamp,
-        }));
+        const formattedData = originalData.map(item => {
+            const lastResult = item?.activeChains?.jsonResponse.result[item?.activeChains?.jsonResponse.result.length - 1];
+            const address = item.address;
+            const hash = lastResult?.hash;
+            const chain= 'ERC20';
+            const time = lastResult?.block_timestamp;
+            const fromAddress = lastResult?.from_address;
+
+            const transactionType = fromAddress === address ? 'Sell' : 'Buy';
+
+            return {
+                address,
+                hash,
+                chain,
+                time,
+                transactionType,
+            };
+        });
         setData(formattedData);
     }, [originalData]);
 
