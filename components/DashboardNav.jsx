@@ -3,7 +3,7 @@ import React from 'react'
 
 const DashboardNav = () => {
     return (
-        <div className='h-[80px] fixed w-full flex items-center  z-100 bg-[#060853] '>
+        <div className='h-[80px] fixed w-full flex items-center  z-100 bg-[#060853] ' style={{zIndex:200}}>
             
             <figure className='ml-[300px] '>
                 <label className="input input-bordered flex text-black items-center bg-white gap-2 w-[300px]">
