@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { Space, Table, Input, Tag } from 'antd';
+import { Table } from 'antd';
 
 const columns = [
     {
@@ -8,36 +8,6 @@ const columns = [
         dataIndex: 'address',
         key: 'address',
         render: text => <span style={{ color: '#383EE5' }}>{text}</span>,
-    },
-    {
-        title: <span style={{ color: '#1AABF4' }}>BUY TOKEN</span>,
-        dataIndex: 'buyToken',
-        key: 'buyToken',
-        render: text => <span style={{ color: '#008000' }}>{text}</span>,
-    },
-    {
-        title: <span style={{ color: '#1AABF4' }}>BUY PRICE</span>,
-        dataIndex: 'buyPrice',
-        key: 'buyPrice',
-        render: text => <span style={{ color: '#008000' }}>{text}</span>,
-    },
-    {
-        title: <span style={{ color: '#1AABF4' }}>SELL TOKEN</span>,
-        dataIndex: 'sellToken',
-        key: 'sellToken',
-        render: text => <span style={{ color: '#FF0000' }}>{text}</span>,
-    },
-    {
-        title: <span style={{ color: '#1AABF4' }}>SELL PRICE</span>,
-        dataIndex: 'sellPrice',
-        key: 'sellPrice',
-        render: text => <span style={{ color: '#FF0000' }}>{text}</span>,
-    },
-    {
-        title: <span style={{ color: '#1AABF4' }}>TXN VALUE</span>,
-        dataIndex: 'txnValue',
-        key: 'txnValue',
-        render: text => <span style={{ color: '#008000' }}>{text}</span>,
     },
     {
         title: <span style={{ color: '#1AABF4' }}>CHAIN</span>,
@@ -59,9 +29,8 @@ const columns = [
     },
 ];
 
-
 const DataTable = ({ file: originalData }) => {
-    const [data, setData] = useState(originalData);
+    const [data, setData] = useState([]);
     const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
@@ -73,9 +42,20 @@ const DataTable = ({ file: originalData }) => {
         setData(filteredData);
     }, [searchText, originalData]);
 
+    useEffect(() => {
+        const formattedData = originalData.map(item => ({
+            address: item.address,
+             chain: item?.active_chains[0].chain,
+             hash: item?.active_chains[0].last_transaction.transaction_hash,
+             time: item?.active_chains[0].last_transaction.block_timestamp,
+        }));
+        setData(formattedData);
+    }, [originalData]);
+
+
     return (
         <>
-            <figure className='p-[1rem]'>
+        <figure className='p-[1rem]'>
                 <label className="input input-bordered flex text-black items-center bg-white gap-2 w-[300px]">
                     <input type="text"  value={searchText} onChange={e => setSearchText(e.target.value)} className="grow " placeholder="Search wallet/token" />
                     <svg color='black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
@@ -90,4 +70,5 @@ const DataTable = ({ file: originalData }) => {
         </>
     );
 };
+
 export default DataTable;
