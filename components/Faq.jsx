@@ -48,7 +48,9 @@ const Faq = () => {
 
     return (
         <div className='bg-[#060853] p-[2rem] text-white relative my-[4rem] '>
-            <img src={tab.src} alt="" class="m-auto absolute h-[90%] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+            <img src={tab.src} alt="" 
+              className="m-auto absolute h-[90%] left-1/2 top-1/2
+               transform-translate-x-1/2 -translate-y-1/2" />
 
             <h2 className='text-center text-3xl z-4 relative'>FAQs</h2>
             <p className='text-center z-4 relative'>Your questions answered</p>
@@ -58,7 +60,7 @@ const Faq = () => {
                     accordion
                     onChange={onChange}
                     expandIcon={customExpandIcon}
-                    expandIconPosition='right'
+                    expandIconPosition='end'
                 >
                     {items.map((item) => (
                         <Collapse.Panel
