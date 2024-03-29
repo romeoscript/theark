@@ -1,15 +1,21 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
-import Link from 'next/link';
 
+
+const truncateHash = hash => {
+    if (hash) {
+        return `${hash.slice(0, 5)}****${hash.slice(-5)}`;
+    }
+    return '';
+};
 const columns = [
     {
         title: <span style={{ color: '#1AABF4' }}>ADDRESS</span>,
         dataIndex: 'address',
         key: 'address',
         render: (text, record) => (
-            <Link to={`/address/${text}`} style={{ color: '#383EE5' }}>{text}</Link>
+            <a href={`/Dashboard/${text}`} style={{ color: '#383EE5' }}>{text}</a>
         ),
     },
     {
@@ -22,14 +28,14 @@ const columns = [
         title: <span style={{ color: '#1AABF4' }}>HASH</span>,
         dataIndex: 'hash',
         key: 'hash',
-        render: text => <span style={{ color: 'black' }}>{text}</span>,
+        render: text => <span style={{ color: 'black' }}>{truncateHash(text)}</span>,
     },
     {
         title: <span style={{ color: '#1AABF4' }}>Transaction Type</span>,
         dataIndex: 'transactionType',
         key: 'transactionType',
         render: (text, record) => (
-            <span style={{ color: text === 'Buy' ? 'red' : 'green' }}>{text}</span>
+            <span style={{ color: text === 'Sell' ? 'red' : 'green' }}>{text}</span>
         ),
     },
     {

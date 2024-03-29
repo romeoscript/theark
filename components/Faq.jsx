@@ -40,7 +40,6 @@ const Faq = () => {
         setActiveKey(key);
     };
 
-    // Custom expand icon placed at the end
     const customExpandIcon = (panelProps) => {
         const isExpanded = panelProps.isActive;
         return isExpanded ? <div className='border-white border-[1px] text-white p-[0.5rem] rounded-md'><MinusOutlined className='text-white' /></div> : <div className='button-linear  text-white p-[0.5rem] rounded-md'><PlusOutlined className='text-white' /></div>;

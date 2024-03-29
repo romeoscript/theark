@@ -27,7 +27,6 @@ export default function Home() {
                     const activeChains = await Moralis.EvmApi?.transaction.getWalletTransactions({ address });
                     return { address, activeChains };
                 });
-console.warn("transactionsPromises", transactionsPromises)
                 const transactionsData = await Promise.all(transactionsPromises);
                 setTransactions(transactionsData);
             } catch (error) {
@@ -42,6 +41,9 @@ console.warn("transactionsPromises", transactionsPromises)
             <div className="pt-[80px] text-black">
                 <figure className="p-[1rem]">
                     <p className="text-black text-4xl font-bold">Dashboard</p>
+
+                    <h2 className="text-black text-2xl font-bold my-[1rem]">Transactions</h2>
+                     <p>Last 7 days biggest transactions, gain valuable insights into trends, key clients, and overall financial health, empowering informed decision-making and strategic planning. Dive into the data and unlock actionable intelligence.</p>
                     <DataTable file={transactions} />
                 </figure>
             </div>
