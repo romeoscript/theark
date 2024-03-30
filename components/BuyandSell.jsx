@@ -6,7 +6,6 @@ import eth from '../public/assets/eth.svg'
 
 const BuyandSell = ({data}) => {
 
-    console.log(data)
     const columns = [
         {
             title: '',
