@@ -6,7 +6,7 @@ import React from 'react'
 
 
 const Page = () => {
-    const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/top-holders`)
+    const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/top-holdings`)
     
     const data = datas?.data
   return (

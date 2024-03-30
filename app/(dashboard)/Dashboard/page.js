@@ -38,12 +38,12 @@ export default function Home() {
 
     return (
         <main>
-            <div className="pt-[80px] text-black">
+            <div className="md:pt-[80px] text-black">
                 <figure className="p-[1rem]">
-                    <p className="text-black text-4xl font-bold">Dashboard</p>
+                    <p className="text-black md:text-4xl text-2xl font-bold">Dashboard</p>
 
-                    <h2 className="text-black text-2xl font-bold my-[1rem]">Transactions</h2>
-                     <p>Last 7 days biggest transactions, gain valuable insights into trends, key clients, and overall financial health, empowering informed decision-making and strategic planning. Dive into the data and unlock actionable intelligence.</p>
+                    <h2 className="text-black md:text-2xl font-bold my-[1rem]">Transactions</h2>
+                     <p className='text-sm'>Last 7 days biggest transactions, gain valuable insights into trends, key clients, and overall financial health, empowering informed decision-making and strategic planning. Dive into the data and unlock actionable intelligence.</p>
                     <DataTable file={transactions} />
                 </figure>
             </div>
