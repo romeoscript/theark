@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation'
 
 const SIdebar = () => {
     const router = usePathname()
-    console.log(router)
+  
     return (
-        <div className='fixed h-[100vh] w-[300px] bg-[#060853] z-999' style={{ zIndex: 200 }}>
+        <div className='fixed h-[100vh] max-md:hidden w-[300px] bg-[#060853] z-999' style={{ zIndex: 200 }}>
             <figure className='flex items-center capitalize text-2xl'>
                 <img src={logo.src} alt="" />
                 the ark

@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <DashboardNav />
         <div className="flex" >
           <SIdebar />
-          <main className="w-[calc(100%_-_300px)] ml-[300px] ">
+          <main className="md:w-[calc(100%_-_300px)] md:ml-[300px] ">
             {children}
           </main>
         </div>
