@@ -13,7 +13,11 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+   
   }
+}
+html, body{
+  overflow-x: hidden;
 }
 .footerbg{
   background: linear-gradient(90.34deg, rgba(6, 8, 83, 0.9) -14.35%, rgba(56, 62, 229, 0.9) 88.12%);

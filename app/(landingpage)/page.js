@@ -11,8 +11,8 @@ export default function Home() {
     <main>
       <Hero />
       <Offer />
-      <Stories />
-      <Resources />
+      {/* <Stories /> */}
+      {/* <Resources /> */}
       <Sub />
       <Faq />
     </main>

@@ -53,7 +53,7 @@ const Faq = () => {
 
             <h2 className='text-center text-3xl z-4 relative'>FAQs</h2>
             <p className='text-center z-4 relative'>Your questions answered</p>
-            <div className='w-3/5 m-auto'>
+            <div className='md:w-3/5 m-auto'>
                 <Collapse
                     className='text-white'
                     accordion
