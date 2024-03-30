@@ -63,7 +63,7 @@ const BuyandSell = ({data}) => {
        
                     <h2 className='text-center font-bold text-3xl text-[green]'>Buys</h2>
                     <Table
-                        dataSource={data.buys}
+                        dataSource={data?.buys}
                         columns={columns}
                         pagination={{ pageSize: 7 }}
                         rowKey={(record, index) => index}
@@ -72,7 +72,7 @@ const BuyandSell = ({data}) => {
            
                     <h2 className='text-center font-bold text-3xl text-[red]'>Sells</h2>
                     <Table
-                        dataSource={data.sells}
+                        dataSource={data?.sells}
                         columns={columns}
                         pagination={{ pageSize: 7 }}
                         rowKey={(record, index) => index}
