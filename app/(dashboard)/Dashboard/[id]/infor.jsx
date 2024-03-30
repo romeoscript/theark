@@ -109,7 +109,7 @@ const data = datas?.data;
             </div>
 
         </div>
-        <BuyandSell />
+        <BuyandSell data={data} />
     </div>
 };
 
