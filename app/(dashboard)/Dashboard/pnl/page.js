@@ -7,7 +7,7 @@ const { Meta } = Card;
 
 
 const Page = () => {
-    const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/wallets/highest_growth_wallet`)
+    const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/highest_growth_wallet`)
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 6;
 

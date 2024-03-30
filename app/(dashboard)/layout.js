@@ -2,17 +2,13 @@
 "use client"
 import { Inter } from "next/font/google";
 import "../globals.css";
-import React, { useState } from 'react';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import React from 'react';
+import { Layout, Menu, theme } from 'antd';
 import { CiHome } from "react-icons/ci";
 import { MdOutlineBrightnessHigh } from "react-icons/md";
 import { IoRocketSharp } from "react-icons/io5";
 import Link from "next/link";
+import logo from '../../public/assets/logo.svg'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -20,7 +16,6 @@ const { Header, Content, Footer, Sider } = Layout;
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
-  const [collapsed, setCollapsed] = useState(false);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -72,7 +67,10 @@ export default function RootLayout({ children }) {
                   padding: 0,
                   background: colorBgContainer,
                 }}
-              />
+              >
+                <img src={logo.src} alt="" />
+              </Header>
+
 
               <Content
                 style={{
@@ -97,7 +95,7 @@ export default function RootLayout({ children }) {
                   textAlign: 'center',
                 }}
               >
-               theark ©{new Date().getFullYear()} Created by <Link href='https://github.com/romeoscript'>Romeoscript</Link> 
+                theark ©{new Date().getFullYear()} Created by <Link href='https://github.com/romeoscript'>Romeoscript</Link>
               </Footer>
             </Layout>
           </Layout>
