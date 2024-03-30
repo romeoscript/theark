@@ -11,7 +11,7 @@ const Offer = () => {
                 <p>Looking to explore, learn about the diverse approach of crypto trading. The Ark provides a conducive platform to ease learning</p>
 
             </div>
-            <figure className='md:flex gap-[2%] grid p-[1rem] my-[1rem] items-center'>
+            <figure className='md:flex gap-[2%] grid p-[1rem] my-[1rem] items-center animate-in fade-in zoom-in'>
                 <aside className='basis-[59%]'>
                     <img src={unlock.src} alt="" className='w-full rounded-[20px]' />
                 </aside>

@@ -3,10 +3,12 @@ import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import BuyandSell from '@/components/BuyandSell';
 import { useFetch } from '@/components/Hooks/useFetch';
+import Loading from '@/components/Loading';
 
 
 const Infor = ({ address }) => {
     const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/monitor_wallet/${address}`);
+    const isloading = datas.isLoading;
     const buysChartContainer = useRef(null);
     const sellsChartContainer = useRef(null);
     const buysChartInstance = useRef(null);
@@ -95,7 +97,9 @@ const data = datas?.data;
         }
         return colors;
     };
-
+    if (isloading) {
+        return <Loading/>
+    }
     return <div>
         <div className='md:h-[500px] md:w-4/5 m-auto gap-4 justify-between md:flex  grid text-black '>
 

@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { Card, Row, Col, Statistic, Table, Space, Avatar, Pagination } from 'antd';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '@/components/Hooks/useFetch';
+import Loading from '@/components/Loading';
 const { Meta } = Card;
 
 
 const Page = () => {
     const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/highest_growth_wallet`)
+    const isLoading = datas.isLoading
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 6;
 
@@ -27,7 +29,9 @@ const Page = () => {
         setCurrentPage(page);
     };
 
-
+    if (isLoading) {
+        return <Loading />
+    }
     return (
         <div >
             <div className='flex gap-4 max-md:flex-col' >
