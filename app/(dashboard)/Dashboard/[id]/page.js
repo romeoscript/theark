@@ -27,7 +27,7 @@ const Page = () => {
        
     ];
     console.log(id, 'pathname');
-    return <div className='mt-[7rem] px-[1rem]'>
+    return <div className=' px-[1rem]'>
         <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
 
     </div>;

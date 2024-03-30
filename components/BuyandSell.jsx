@@ -58,7 +58,7 @@ const BuyandSell = ({data}) => {
         },
     ];
     return (
-        <div className='w-4/5 text-black m-auto'>
+        <div className='md:w-4/5 text-black m-auto mt-[2rem]'>
 
        
                     <h2 className='text-center font-bold text-3xl text-[green]'>Buys</h2>
@@ -68,15 +68,17 @@ const BuyandSell = ({data}) => {
                         pagination={{ pageSize: 7 }}
                         rowKey={(record, index) => index}
                         size="small"
+                        style={{overflowX: 'auto' }}
                     />
            
-                    <h2 className='text-center font-bold text-3xl text-[red]'>Sells</h2>
+                    <h2 className='text-center font-bold text-3xl text-[red] mt-[2rem]'>Sells</h2>
                     <Table
                         dataSource={data?.sells}
                         columns={columns}
                         pagination={{ pageSize: 7 }}
                         rowKey={(record, index) => index}
                         size="small"
+                        style={{overflowX: 'auto' }}
                     />
             
         </div>

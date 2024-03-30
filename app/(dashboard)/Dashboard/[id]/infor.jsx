@@ -97,7 +97,7 @@ const data = datas?.data;
     };
 
     return <div>
-        <div className='mt-[3rem] h-[500px] w-4/5 m-auto gap-4 justify-between flex text-black '>
+        <div className='md:h-[500px] md:w-4/5 m-auto gap-4 justify-between md:flex  grid text-black '>
 
             <div className='basis-[45%]'>
                 <p className='text-xl'>Total Buys</p>

@@ -1,15 +1,15 @@
 "use client"
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Card, Row, Col, Statistic, Table, Space, Avatar, Pagination } from 'antd';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '@/components/Hooks/useFetch';
 
 const { Meta } = Card;
 
-const PortfolioDashboard = ({address}) => {
+const PortfolioDashboard = ({ address }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/wallet-overview/${address}`);
-    const pageSize = 6; 
+    const pageSize = 6;
 
     console.log(datas, 'datas')
     const getRowClassName = (record) => {
@@ -28,13 +28,14 @@ const PortfolioDashboard = ({address}) => {
     };
     return (
         <div>
-            <Row gutter={[16, 16]}>
-                <Col span={8}>
+            <div className='flex gap-4 max-md:flex-col' >
+
+                <Col xs={24} sm={24} md={8}>
                     <Card>
                         <Statistic title="Total Networth (USD)" value={parseFloat(networth?.total_networth_usd)} precision={2} />
                     </Card>
                 </Col>
-                <Col span={16}>
+                <Col xs={24} sm={24} md={16}>
                     <Card>
                         <ResponsiveContainer width="100%" height={300}>
                             <LineChart data={portfolioData?.result}>
@@ -49,11 +50,12 @@ const PortfolioDashboard = ({address}) => {
                         </ResponsiveContainer>
                     </Card>
                 </Col>
-            </Row>
+
+            </div>
             <div className='my-[1rem]'>
                 <Row gutter={[16, 16]}>
                     {portfolioData?.result?.slice(startIndex, endIndex).map((token, index) => (
-                        <Col key={index} span={8}>
+                        <Col key={index} span={8} xs={24} sm={24} md={12}>
                             <Card
                                 hoverable
                                 style={{ width: '100%' }}
@@ -80,12 +82,12 @@ const PortfolioDashboard = ({address}) => {
                     ))}
                 </Row>
                 <Pagination
-                style={{ marginTop: '16px', textAlign: 'center' }}
-                current={currentPage}
-                pageSize={pageSize}
-                total={portfolioData?.result?.length}
-                onChange={handlePageChange}
-            />
+                    style={{ marginTop: '16px', textAlign: 'center' }}
+                    current={currentPage}
+                    pageSize={pageSize}
+                    total={portfolioData?.result?.length}
+                    onChange={handlePageChange}
+                />
             </div>
             <Row gutter={[16, 16]}>
                 <h2 className='text-center font-bold text-3xl mx-auto my-[1rem]'>Portfolio Data</h2>
