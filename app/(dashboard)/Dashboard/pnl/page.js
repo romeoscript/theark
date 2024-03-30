@@ -1926,6 +1926,7 @@ const data = {
     }
   }
   const networth = data.net_worth;
+  const wallet = data.wallet;
   const portfolioData = data['portfolio_data'];
 
   const totalPages = Math.ceil(portfolioData.result.length / pageSize);
@@ -1940,10 +1941,14 @@ const data = {
   return (
     <div className='mt-[7rem]'>
     <Row gutter={[16, 16]}>
-        <Col span={8}>
+        <Col span={8} className='gap-4'>
             <Card>
                 <Statistic title="Total Networth (USD)" value={parseFloat(networth)} precision={2} />
             </Card>
+            <Card>
+                <h2 className=' font-bold text-sm text-gray-500'>Wallet Address</h2>
+              <p className='text-[12px]'>{wallet}</p>
+               </Card>
         </Col>
         <Col span={16}>
             <Card>
@@ -1998,9 +2003,11 @@ const data = {
         onChange={handlePageChange}
     />
     </div>
+    <div className='w-[90%] m-auto'>
     <Row gutter={[16, 16]}>
         <h2 className='text-center font-bold text-3xl mx-auto my-[1rem]'>Portfolio Data</h2>
-        <Col span={24}>
+     
+      <Col span={24}>
             <Table
                 dataSource={portfolioData.result}
                 rowKey="token_address"
@@ -2027,7 +2034,9 @@ const data = {
                 />
             </Table>
         </Col>
+     
     </Row>
+    </div>
 </div>
   );
 };

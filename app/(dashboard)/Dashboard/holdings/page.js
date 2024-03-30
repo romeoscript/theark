@@ -7565,7 +7565,7 @@ const data = [
 
 const page = () => {
   return (
-    <div className='w-4/5 m-auto mt-[7rem]'>
+    <div className='w-[90%] m-auto mt-[7rem]'>
         <h2 className='text-2xl text-black text-center font-bold my-[2rem]'>Top Holdings</h2>
       <BeautifulTable data={data} />
     </div>
