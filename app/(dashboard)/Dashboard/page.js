@@ -38,7 +38,7 @@ export default function Home() {
 
     return (
         <main>
-            <div className="md:pt-[80px] text-black">
+            <div className=" text-black">
                 <figure className="p-[1rem]">
                     <p className="text-black md:text-4xl text-2xl font-bold">Dashboard</p>
 

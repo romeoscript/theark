@@ -10,7 +10,7 @@ const Page = () => {
     
     const data = datas?.data
   return (
-    <div className='w-[90%] m-auto mt-[7rem]'>
+    <div className='w-[90%] m-auto '>
         <h2 className='text-2xl text-black text-center font-bold my-[2rem]'>Top Holdings</h2>
       <BeautifulTable data={data} />
     </div>

@@ -85,7 +85,6 @@ export default function RootLayout({ children }) {
               >
                 <div
                   style={{
-                    padding: 24,
                     minHeight: 360,
                     background: colorBgContainer,
                     borderRadius: borderRadiusLG,
@@ -98,7 +97,7 @@ export default function RootLayout({ children }) {
                   textAlign: 'center',
                 }}
               >
-                Ant Design ©{new Date().getFullYear()} Created by Ant UED
+               theark ©{new Date().getFullYear()} Created by <Link href='https://github.com/romeoscript'>Romeoscript</Link> 
               </Footer>
             </Layout>
           </Layout>

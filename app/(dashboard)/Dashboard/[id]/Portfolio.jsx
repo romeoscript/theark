@@ -95,6 +95,7 @@ const PortfolioDashboard = ({address}) => {
                         rowKey="token_address"
                         rowClassName={getRowClassName}
                         pagination={{ pageSize: 10 }}
+                        size="small"
                         style={{ maxWidth: '100%', overflowX: 'auto' }}
                     >
                         <Table.Column title="Token" dataIndex="symbol" key="symbol" />
