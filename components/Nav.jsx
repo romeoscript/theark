@@ -2,14 +2,15 @@
 import React, { useState } from 'react'
 import logo from '../public/assets/logo.svg'
 import { RiMenu4Fill } from "react-icons/ri";
+import Link from 'next/link';
 
 const Nav = () => {
-    const [showMobile, setShowMobile ] = useState(false)
+    const [showMobile, setShowMobile] = useState(false)
     const displayMobile = () => {
         setShowMobile(!showMobile)
     }
     return (
-        <nav className='fixed top-0 w-full flex justify-around bg-[#060853] text-white h-[80px] p-[1rem]' style={{zIndex:100}}>
+        <nav className='fixed top-0 w-full flex justify-around bg-[#060853] text-white h-[80px] p-[1rem]' style={{ zIndex: 100 }}>
             <h1 className='flex items-center max-md:w-10 max-md:text-md'> <img src={logo.src} alt="" /><span className='max-md:hidden'>The Ark</span></h1>
             <ul className='md:flex hidden items-center gap-4 bg-[rgba(255,255,255,0.1)] backdrop-blur-sm p-[1rem] px-[2rem] rounded-full  '>
                 <li>
@@ -25,7 +26,9 @@ const Nav = () => {
                     <a href="/about">Pricing</a>
                 </li>
             </ul>
-            <button className='button-linear px-[2rem] py-[1rem] rounded-full text-center flex items-center justify-center'>Explore</button>
+            <Link href='/Dashboard'>
+                <button className='button-linear px-[2rem] py-[1rem] rounded-full text-center flex items-center justify-center'>Explore</button>
+            </Link>
             <div className=' text-3xl relative'>
                 <RiMenu4Fill className='md:hidden cursor-pointer' onClick={displayMobile} />
 
