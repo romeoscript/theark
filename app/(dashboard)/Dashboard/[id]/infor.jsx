@@ -22,11 +22,11 @@ const data = datas?.data;
                 sellsChartInstance.current.destroy();
             }
 
-            const buys = data.buys;
-            const sells = data.sells;
+            const buys = data?.buys;
+            const sells = data?.sells;
 
-            const buyLabels = [...new Set(buys.map(buy => buy.token_symbol))];
-            const sellLabels = [...new Set(sells.map(sell => sell.token_symbol))];
+            const buyLabels = [...new Set(buys?.map(buy => buy.token_symbol))];
+            const sellLabels = [...new Set(sells?.map(sell => sell.token_symbol))];
 
             const buyData = buyLabels.map(label => {
                 const totalBuyAmount = buys.filter(buy => buy.token_symbol === label).reduce((acc, buy) => acc + parseFloat(buy.value_decimal), 0);

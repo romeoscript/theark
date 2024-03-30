@@ -18,8 +18,8 @@ export default function Home() {
             try {
                
                  Moralis.start({
-                    apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjMyNWUxNzNlLTJiNzUtNGEwYy1hN2Q1LTUzYzRhYTk3OTExMiIsIm9yZ0lkIjoiMzg1Mjk5IiwidXNlcklkIjoiMzk1OTA1IiwidHlwZUlkIjoiNzU0ZTQ5NTEtMGUxZS00ZmQzLWIwZmEtOGQ5MWY2ZmM4MWE3IiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3MTE3MDgwMDUsImV4cCI6NDg2NzQ2ODAwNX0.fo-tfxq4aB9ucNl6gdcBxTbs_rQCGkKelgtSGFJtcog"
-                  });
+                    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+                 });
                   if (addresses) {
                     const transactionsPromises = addresses.map(async (address) => {
                         const activeChains = await Moralis.EvmApi?.transaction.getWalletTransactions({ address });
