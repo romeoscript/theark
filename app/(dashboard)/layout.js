@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="bg-white">
       <body className={inter.className}>
         <main >
-          <Layout style={{ height: "100vh" }}>
+          <Layout style={{ minHeight: "100vh" }}>
             <Sider
               width={300}
               breakpoint="lg"
