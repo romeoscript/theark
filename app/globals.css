@@ -79,6 +79,11 @@ body {
   background: white
 }
 
+.custom-menu .ant-menu-item-selected {
+  background-color: #f8f8f8;
+  border-radius: 25px;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
