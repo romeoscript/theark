@@ -32,6 +32,9 @@ const Page = () => {
     content: {
       boxShadow: '-10px 0 10px #666',
     },
+    body: {
+
+    },
     header: {
       marginTop: 70
     },
@@ -89,11 +92,11 @@ const Page = () => {
           </button>
           </div>
           <MonitorWalletTable file={data} />
-           <Drawer title="Basic Drawer" onClose={onClose} open={open} height={100} styles={drawerStyles}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
+            {open && (
+        <div className="absolute top-[5.5em] right-0 bg-[#060853] bottom-0 w-[20rem] h-screen p-7 transition-all duration-500 ease-in-out">
+          <div></div>
+        </div>
+      )}
           </>
         ) : (
           <PortfolioDashboard address={id} />
