@@ -15,7 +15,7 @@ const columns = [
         dataIndex: 'address',
         key: 'address',
         render: (text, record) => (
-            <a href={`/Dashboard/${text}`} style={{ color: '#383EE5' }}>{truncateHash(text)}</a>
+            <a href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{truncateHash(text)}</a>
         ),
     },
     {

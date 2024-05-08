@@ -15,7 +15,7 @@ const Page = () => {
   }
   return (
     <div className='w-[90%] m-auto '>
-        <h2 className='text-2xl text-black text-center font-bold my-[2rem]'>Top Holdings</h2>
+        <h2 className='text-2xl text-black text-start font-bold my-[2rem]'>Top Holdings</h2>
       <BeautifulTable data={data} />
     </div>
   )
