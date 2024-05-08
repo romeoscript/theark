@@ -35,15 +35,12 @@ export default function RootLayout({ children }) {
     }
   };
 
-  const cancelDrawer = () => {
-    console.log('stroked')
-    setFilterDrawer(false);
-  };
 
   return (
     <html lang="en" className="bg-white">
       <body className={inter.className}>
-        <main>
+        <main>                  
+
           <Layout style={{ minHeight: "100vh" }}>
             <Layout>
               <Header
@@ -144,27 +141,6 @@ export default function RootLayout({ children }) {
                   }`}
                 >
                   {children}
-                  <div
-                    className={`absolute top-20 right-0 bg-[#060853] transition-all duration-300 ease-in-out ${
-                      filterDrawer ? "w-[25em] p-4 h-[100vh]" : "w-0"
-                    }`}
-                    style={{ pointerEvents: filterDrawer ? 'auto' : 'none' }}
-                  >
-                    <div className="flex items-center justify-between p-4 w-full text-white">
-                      <span className="text-xl font-semibold">Filter</span>
-                      <button
-                        className="rounded-full p-2 cursor-pointer"
-                        onClick={() => cancelDrawer()}
-                      >
-                        <CloseOutlined className="text-white rounded-full bg-opacity-20 p-2 bg-slate-100" />
-                      </button>
-                    </div>
-                    <div className="absolute bottom-10 border-t border-gray-100">
-                      <button>Reset</button>
-                      <button>Button</button>
-                    </div>
-                    <div></div>
-                  </div>
                 </div>
               </Content>
               <Footer

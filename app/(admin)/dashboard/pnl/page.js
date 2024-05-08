@@ -87,6 +87,7 @@ const Page = () => {
     },
   ]
 }
+
     return (
         <div>
             <div className='flex gap-4 max-md:flex-col flex-col' >

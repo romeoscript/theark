@@ -58,12 +58,9 @@ export default function Home() {
                         <div className='flex gap-4 space-x-4 bg-gray-200 rounded-lg font-semibold'>
                             {
                                 tokens?.map((token, index) => (
-                                    <button key={index} onClick={() => handleSelectedToken(token)} className={`${selectedToken === token ? 'bg-gradient px-8 text-white' : 'px-3'} rounded-lg `}>{token}</button>
+                                    <button key={index} onClick={() => handleSelectedToken(token)} className={`${selectedToken === token ? 'bg-gradient text-white' : ''} rounded-lg px-8`}>{token}</button>
                                 )) 
                             }
-                            {/* <button onClick={() => handleSelectedToken('ETH')} className='px-3'>ETH</button>
-                            <button onClick={() => handleSelectedToken('BASE')} className='px-3'>BASE</button>
-                            <button onClick={() => handleSelectedToken('SOLANA')} className='px-3'>SOLANA</button> */}
                         </div>
                         <div className='flex space-x-2 items-center'>
                     <label className="input input-bordered flex text-black items-center bg-white gap-2 w-[300px]">
