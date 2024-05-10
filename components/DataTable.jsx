@@ -12,36 +12,39 @@ const truncateHash = hash => {
 const columns = [
     {
         title: <span style={{ color: '#1AABF4', fontSize:'12px' }}>ADDRESS</span>,
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'contract_address',
+        key: 'contract_address',
         render: (text, record) => (
-            <a href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{truncateHash(text)}</a>
+            <div className='flex gap-2'>
+                <img src={record?.token_logo} alt='' className='w-5 h-5 '/>
+                <a href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{truncateHash(text)}</a>
+            </div>
         ),
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>CHAIN</span>,
-        dataIndex: 'chain',
-        key: 'chain',
+        dataIndex: 'token_symbol',
+        key: 'token_symbol',
         render: text => <span style={{ color: 'black',  fontSize:'12px' }}>{text}</span>,
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>HASH</span>,
-        dataIndex: 'hash',
-        key: 'hash',
+        dataIndex: 'transaction_hash',
+        key: 'transaction_hash',
         render: text => <span style={{ color: 'black' }}>{truncateHash(text)}</span>,
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>Transaction Type</span>,
-        dataIndex: 'transactionType',
-        key: 'transactionType',
+        dataIndex: 'type',
+        key: 'type',
         render: (text, record) => (
-            <span style={{ color: text === 'Sell' ? 'red' : 'green' }}>{text}</span>
+            <span style={{ color: text === 'sell' ? 'red' : 'green' }}>{text}</span>
         ),
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>TIME</span>,
-        dataIndex: 'time',
-        key: 'time',
+        dataIndex: 'time_ago',
+        key: 'time_ago',
         render: text => <span style={{ color: 'black' }}>{text}</span>,
     },
 ];

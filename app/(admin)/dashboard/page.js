@@ -1,46 +1,28 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import DataTable from '@/components/DataTable';
 import { useFetch } from '@/components/Hooks/useFetch';
 import Loading from '@/components/Loading';
 import { Input, Select } from 'antd';
 
 const backendurl = process.env.NEXT_PUBLIC_API_URL;
-console.log(`${backendurl}/wallets/`)
 
 export default function Home() {
-    const [transactions, setTransactions] = useState([
-        {
-            address: '0x73093hdfkd338204kdksfkhs',
-            chain: 'ERC 20',
-            hash: '0x73093hdfkd338204kdksfkhs',
-            transactionType: 'Buy',
-            time: (new Date())?.getYear()
-        },
-        {
-            address: '0x73483dgdsdfkdbagdkb83',
-            chain: 'BITCOIN',
-            hash: '0x73483dgdsdfkdbagdkb83',
-            transactionType: 'Sell',
-            time: (new Date())?.getYear()
-        },
-    ]);
-
     const [searchText, setSearchText] = useState([]);
-    const { data, isLoading } = useFetch(`${backendurl}/wallets/`);
+    const { data, isLoading } = useFetch(`${backendurl}/market-streams-smw`);
     const [selectedToken, setSelectedToken] = useState('All')
+
+    console.log(data)
 
     const handleSelectedToken = (value) => {
         setSelectedToken(value)
     }
 
-    const tokens = [
-        'All', 'ETH', 'BASE', 'SOLANA'
-    ]
-
-    const addresses = data?.map((item) => item.address);
+    const tokens = Objects.keys(data)
 
     const { Search } = Input;
+    
+    console.log(tokens)
 
     if (isLoading) {
         return <Loading />
@@ -58,7 +40,7 @@ export default function Home() {
                         <div className='flex gap-4 space-x-4 bg-gray-200 rounded-lg font-semibold'>
                             {
                                 tokens?.map((token, index) => (
-                                    <button key={index} onClick={() => handleSelectedToken(token)} className={`${selectedToken === token ? 'bg-gradient text-white' : ''} rounded-lg px-8`}>{token}</button>
+                                    <button key={index} onClick={() => handleSelectedToken(token)} className={`${selectedToken === token ? 'bg-gradient text-white' : ''} rounded-lg px-5`}>{data}</button>
                                 )) 
                             }
                         </div>
@@ -92,8 +74,9 @@ export default function Home() {
                         />
                         </div>
                         </div>
-                    </div>
-                    <DataTable file={transactions} />
+                    </div>   
+
+                    <DataTable file={data?.ETH?.transactions} />
                 </figure>
             </div>
         </main>
