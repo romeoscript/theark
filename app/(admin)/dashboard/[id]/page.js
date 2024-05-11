@@ -1,5 +1,5 @@
 "use client"
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { Tabs } from 'antd';
 import { usePathname } from 'next/navigation';
 import Infor from './infor';
@@ -7,22 +7,26 @@ import PortfolioDashboard from './Portfolio';
 import TabPane from 'antd/es/tabs/TabPane';
 import { IoArrowBackOutline } from "react-icons/io5";
 import { PiSlidersLight } from "react-icons/pi";
-import { router } from 'next/router'
+import { useRouter } from 'next/navigation'
 import MonitorWalletTable from '@/components/MonitorWalletTable';
-import { Drawer } from "antd";
+import { useFetch } from '@/components/Hooks/useFetch';
+import testData from '@/data/portfolio'
 
+console.log('😆', testData)
 
 const onChange = (key) => {
     console.log(key);
 };
-  
-
 
 const Page = () => {
     const pathname = usePathname();
     const id = pathname.split('/').pop();
+    const router = useRouter()
     const [currentTab, setCurrentTab] = useState(0) // 0 -> Monitor Wallet & 1 -> Wallet Overview
     const [open, setOpen] = useState(false)
+    // const { data: walletOverview, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-holdings/${id}`)
+
+    // console.log(walletOverview)
 
     const onClose = () => {
       setOpen(false)
@@ -40,7 +44,7 @@ const Page = () => {
     },
  
     footer: {
-    },
+    }
   };
 
    const data = [
@@ -68,7 +72,7 @@ const Page = () => {
     console.log(id, 'pathname');
     return (
       <div className='flex flex-col space-y-5'>
-      <button onClick={() => router.push('/dashboard')} className='flex space-x-5 items-center'>
+      <button onClick={() => router.back()} className='flex space-x-5 items-center'>
         <IoArrowBackOutline size={30}/>
         <span className='text-lg font-semibold'>Back</span>
       </button>
@@ -91,7 +95,7 @@ const Page = () => {
             <PiSlidersLight size={20} />
           </button>
           </div>
-          <MonitorWalletTable file={data} />
+          <MonitorWalletTable file={testData?.data} />
             {open && (
         <div className="absolute top-[5.5em] right-0 bg-[#060853] bottom-0 w-[20rem] h-screen p-7 transition-all duration-500 ease-in-out">
           <div></div>

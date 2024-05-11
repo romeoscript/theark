@@ -1,5 +1,5 @@
 'use client'
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import DataTable from '@/components/DataTable';
 import { useFetch } from '@/components/Hooks/useFetch';
 import Loading from '@/components/Loading';
@@ -10,7 +10,9 @@ const backendurl = process.env.NEXT_PUBLIC_API_URL;
 export default function Home() {
     const [searchText, setSearchText] = useState([]);
     const { data, isLoading } = useFetch(`${backendurl}/market-streams-smw`);
-    const [selectedToken, setSelectedToken] = useState('All')
+    const [tokens, setTokens] = useState([])
+    const [selectedToken, setSelectedToken] = useState('ETH')
+    const [transactions, setTransactions] = useState([])
 
     console.log(data)
 
@@ -18,7 +20,15 @@ export default function Home() {
         setSelectedToken(value)
     }
 
-    const tokens = Objects.keys(data)
+    useEffect(() => {
+        setTransactions(data?.[selectedToken]?.transactions)
+    }, [data, selectedToken])
+
+    useEffect(() => {
+        if(data) {
+            setTokens(Object.keys(data))
+        }
+    }, [data])
 
     const { Search } = Input;
     
@@ -37,10 +47,10 @@ export default function Home() {
                     <h2 className="text-black md:text-2xl font-bold my-[1rem]">Recent Transactions</h2>
                     <p className='text-sm'>Last 7 days biggest transactions, gain valuable insights into trends, key clients, and overall financial health, empowering informed decision-making and strategic planning. Dive into the data and unlock actionable intelligence.</p>
                     <div className='flex justify-between pt-4'>
-                        <div className='flex gap-4 space-x-4 bg-gray-200 rounded-lg font-semibold'>
+                        <div className='flex gap-2  bg-gray-200 rounded-lg font-semibold'>
                             {
                                 tokens?.map((token, index) => (
-                                    <button key={index} onClick={() => handleSelectedToken(token)} className={`${selectedToken === token ? 'bg-gradient text-white' : ''} rounded-lg px-5`}>{data}</button>
+                                    <button key={index} onClick={() => handleSelectedToken(token)} className={`${selectedToken === token ? 'bg-gradient text-white' : ''} rounded-lg px-6`}>{token?.toUpperCase()}</button>
                                 )) 
                             }
                         </div>
@@ -76,7 +86,7 @@ export default function Home() {
                         </div>
                     </div>   
 
-                    <DataTable file={data?.ETH?.transactions} />
+                    <DataTable file={transactions} />
                 </figure>
             </div>
         </main>

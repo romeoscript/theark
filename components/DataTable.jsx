@@ -17,7 +17,7 @@ const columns = [
         render: (text, record) => (
             <div className='flex gap-2'>
                 <img src={record?.token_logo} alt='' className='w-5 h-5 '/>
-                <a href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{truncateHash(text)}</a>
+                <button onClick={() => navigator.clipboard.writeText(text)} style={{ color: '#383EE5' }}>{truncateHash(text)}</button>
             </div>
         ),
     },

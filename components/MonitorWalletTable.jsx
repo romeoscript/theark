@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { Table } from 'antd';
+import { Table, Statistic } from 'antd';
 
 
 const truncateHash = hash => {
@@ -12,52 +12,62 @@ const truncateHash = hash => {
 const columns = [
     {
         title: <span style={{ color: '#1AABF4', fontSize:'12px' }}>TOKEN</span>,
-        dataIndex: 'token_name',
-        key: 'token_name',
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
+        key: 'token',
         render: (text, record) => (
-            <a href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{truncateHash(text)}</a>
+            <div className='flex gap-2'>
+                <img src={record?.attributes?.fungible_info?.icon?.url} alt='' className='w-5 h-5' />
+                <a href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{record?.attributes?.fungible_info?.symbol}</a>
+            </div>
         ),
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>TOKEN DEC.</span>,
-        dataIndex: 'token_dec',
-        key: 'token_dec',
-        render: text => <span style={{ color: 'black',  fontSize:'12px' }}>{text}</span>,
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
+        key: 'attributes',
+        render: (text, record) => <span style={{ color: 'black',  fontSize:'12px' }}>{record?.attributes?.quantity?.decimals}</span>,
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>WALLET ADDRESS</span>,
-        dataIndex: 'wallet_address',
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
         key: 'wallet_address',
-        render: text => <span style={{ color: 'black' }}>{truncateHash(text)}</span>,
+        render: (text, record) => <span style={{ color: 'black' }}>{truncateHash(record?.attributes?.fungible_info?.implementations[0]?.address)}</span>,
     },
     {
-        title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>VALUE</span>,
-        dataIndex: 'value',
+        title: <span style={{  fontSize:'12px' }}>VALUE</span>,
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
         key: 'value',
         render: (text, record) => (
-            <span>{text}</span>
+            <div className='flex flex-col '>
+                <span className='text-lg font-semibold'>
+                    <Statistic title="" value={record?.attributes?.value} precision={3}/>
+                </span>
+                <span className='text-xs text-[#808080]'>
+                    <Statistic title="" value={record?.attributes?.price} prefix="$" />
+                </span>
+            </div>
         ),
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>CONTRACT STATUS</span>,
-        dataIndex: 'contract_status',
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
         key: 'contract_status',
-        render: text => <span style={{ backgroundColor: text == 'verified' ? '#0080001A' : '#FF00001A', borderRadius: '7px', color: text == 'verified' ? '#008000' : '#FF0000', padding: 9 }}>{text}</span>,
+        render: (text, record) => <span style={{ backgroundColor: (record?.attributes?.fungible_info?.flag?.verified) == true ? '#0080001A' : '#FF00001A', borderRadius: '7px', color: text == 'verified' ? '#008000' : '#FF0000', padding: 9 }}>{(record?.attributes?.fungible_info?.flag?.verified) ? 'verified' : 'unverified'}</span>,
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>TRANSACTION TYPE</span>,
-        dataIndex: 'transaction_type',
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
         key: 'transaction_type',
         render: (text, record) => (
-            <span style={{ color: text == 'Buy' ? '#008000' : '#FF0000' }}>{text}</span>
+            <span style={{ color: text == 'Buy' ? '#008000' : '#FF0000' }}>Buy</span> // change
         ),
     },
     {
         title: <span style={{ color: '#1AABF4',  fontSize:'12px' }}>POSSIBLE SPAM</span>,
-        dataIndex: 'possible_spam',
+        dataIndex: ['id', 'type', 'attributes', 'relationships'],
         key: 'possible_spam',
         render: (text, record) => (
-            <span>{text}</span>
+            <span>No</span>// change
         ),
     },
 ];
@@ -65,6 +75,8 @@ const columns = [
 const MonitorWalletTable = ({ file: originalData }) => {
     const [data, setData] = useState([]);
     const [searchText, setSearchText] = useState('');
+
+    console.log(originalData)
 
     return (
         <>

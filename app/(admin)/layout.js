@@ -6,7 +6,7 @@ import { Layout, Menu, theme, Input, Drawer, Tooltip } from "antd";
 import { CiHome, CiTrophy } from "react-icons/ci";
 import { MdOutlineBrightnessHigh } from "react-icons/md";
 import { RiHome2Fill } from "react-icons/ri";
-import { IoRocketSharp } from "react-icons/io5";
+import { IoRocketSharp, IoWalletOutline } from "react-icons/io5";
 import Link from "next/link";
 import logo from "../../public/assets/logo.svg";
 import { CloseOutlined, SearchOutlined } from "@ant-design/icons";
@@ -65,7 +65,7 @@ export default function RootLayout({ children }) {
                   mode="horizontal"
                   defaultSelectedKeys={["1"]}
                   style={{
-                    width: "38.9%",
+                    width: "45.5%",
                     padding: 0,
                     borderRadius: 25,
                     borderColor: "white",
@@ -79,10 +79,13 @@ export default function RootLayout({ children }) {
                   <Menu.Item key="2" icon={<MdOutlineBrightnessHigh />} >
                     <Link href="/dashboard/pnl">Highest PNL</Link>
                   </Menu.Item>
-                  <Menu.Item key="3" icon={<CiTrophy />}>
+                   <Menu.Item key="3" icon={<IoWalletOutline />} >
+                    <Link href="/dashboard/wallets">Wallets</Link>
+                  </Menu.Item>
+                  <Menu.Item key="4" icon={<CiTrophy />}>
                     <Link href="/dashboard/holdings">Top Holdings</Link>
                   </Menu.Item>
-                  <Menu.Item key="4" icon={<IoRocketSharp />} className="new-listings-item">
+                  <Menu.Item key="5" icon={<IoRocketSharp />} className="new-listings-item">
                     <Link href="/dashboard/listings">
                       <span clanssName="flex space-x-6">
                         <span>New Listings</span>
