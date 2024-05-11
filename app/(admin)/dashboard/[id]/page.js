@@ -1,6 +1,6 @@
 "use client"
 import {useState, useEffect} from 'react';
-import { Tabs } from 'antd';
+import { Drawer, Tabs } from 'antd';
 import { usePathname } from 'next/navigation';
 import Infor from './infor';
 import PortfolioDashboard from './Portfolio';
@@ -24,7 +24,7 @@ const Page = () => {
     const router = useRouter()
     const [currentTab, setCurrentTab] = useState(0) // 0 -> Monitor Wallet & 1 -> Wallet Overview
     const [open, setOpen] = useState(false)
-    const { data: walletOverview, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-holdings/${id}`)
+    const { data: walletOverview, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/recent_buy_sell?address=${id}`)
 
     // console.log(walletOverview)
 
@@ -32,43 +32,7 @@ const Page = () => {
       setOpen(false)
     } 
 
-     const drawerStyles = {
-    content: {
-      boxShadow: '-10px 0 10px #666',
-    },
-    body: {
 
-    },
-    header: {
-      marginTop: 70
-    },
- 
-    footer: {
-    }
-  };
-
-   const data = [
-  {
-    key: '1',
-    token_name: '0x123...',
-    token_dec: '18',
-    wallet_address: '0x456...',
-    value: '100',
-    contract_status: 'verified',
-    transaction_type: 'Buy',
-    possible_spam: 'No',
-  },
-  {
-    key: '2',
-    token_name: '0x789...',
-    token_dec: '18',
-    wallet_address: '0xABC...',
-    value: '200',
-    contract_status: 'unverified',
-    transaction_type: 'Sell',
-    possible_spam: 'Yes',
-  },
-];
     console.log(id, 'pathname');
 
     if(isLoading) {
@@ -100,17 +64,10 @@ const Page = () => {
             <PiSlidersLight size={20} />
           </button>
           </div>
-          <MonitorWalletTable file={walletOverview?.data} />
-            {open && (
-        <div className="absolute top-[5.5em] right-0 text-white bg-[#060853] bottom-0 w-[20rem] h-screen p-7 transition-all duration-500 ease-in-out">
-          <div className='flex justify-between items-center'>
-            <span className='text-lg font-bold'>Filter</span>
-            <button onclick={() => setOpen(false)}>
-              <IoMdClose className='text-lg text-white'/>
-            </button>
-          </div>
-        </div>
-      )}
+          <MonitorWalletTable file={walletOverview?.transactions} />
+          <Drawer title="" onClose={onClose} open={open}>
+        
+          </Drawer>
           </>
         ) : (
           <PortfolioDashboard address={id} />

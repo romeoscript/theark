@@ -12,7 +12,7 @@ const { Meta } = Card;
 const PortfolioDashboard = ({ address }) => {
     const [displayMode, setDisplayMode] = useState(0) // 0 -> Grid & 1 -> Row
     const [currentPage, setCurrentPage] = useState(1);
-    const {data, isLoading} = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-overview/${address}`);
+    const {data, isLoading} = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/recent_buy_sell?address=${address}`);
     const pageSize = 6;
     const getRowClassName = (record) => {
         return record.possible_spam ? 'spam-row' : '';
