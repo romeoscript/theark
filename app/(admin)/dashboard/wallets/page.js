@@ -2,6 +2,8 @@
 import React from 'react'
 import { Table } from 'antd';
 import { useFetch } from '@/components/Hooks/useFetch';
+import Link from 'next/link';
+import Loading from '@/components/Loading';
 
 
 const Page = () => {
@@ -13,10 +15,14 @@ const Page = () => {
         dataIndex: 'address',
         key: 'address',
         render: (text, record) => (
-            <button onClick={() => router.navigate(`/dashboard/${text}`)} style={{ color: '#383EE5' }}>{text}</button>
+            <Link href={`/dashboard/${text}`} style={{ color: '#383EE5' }}>{text}</Link>
         ),
     },
   ]
+
+  if(isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className='gap-4 flex flex-col space-y-5'>

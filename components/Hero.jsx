@@ -16,7 +16,7 @@ import Auth from './Auth'
 const Hero = () => {
     const [modalOpen, setModalOpen] = useState(false)
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [signUpComplete, setSignUpComplete] = useState(true)
+    const [signUpComplete, setSignUpComplete] = useState(false)
     const [verifyEmailModal, setVerifyEmailModal] = useState(false)
     const [profileModal, setProfileModal] = useState(true)
     

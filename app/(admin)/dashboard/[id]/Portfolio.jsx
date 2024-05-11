@@ -12,13 +12,11 @@ const { Meta } = Card;
 const PortfolioDashboard = ({ address }) => {
     const [displayMode, setDisplayMode] = useState(0) // 0 -> Grid & 1 -> Row
     const [currentPage, setCurrentPage] = useState(1);
-    const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/wallet-overview/${address}`);
+    const {data, isLoading} = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-overview/${address}`);
     const pageSize = 6;
-    const isLoading = datas.isLoading
     const getRowClassName = (record) => {
         return record.possible_spam ? 'spam-row' : '';
     };
-    const data = datas?.data
     const networth = data?.networth;
     const portfolioData = data ? data['portfolio-data'] : null;
 

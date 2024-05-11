@@ -10,6 +10,8 @@ import { PiSlidersLight } from "react-icons/pi";
 import { useRouter } from 'next/navigation'
 import MonitorWalletTable from '@/components/MonitorWalletTable';
 import { useFetch } from '@/components/Hooks/useFetch';
+import Loading from '@/components/Loading';
+import { IoMdClose } from "react-icons/io";
 
 
 const onChange = (key) => {
@@ -68,6 +70,11 @@ const Page = () => {
   },
 ];
     console.log(id, 'pathname');
+
+    if(isLoading) {
+      return <Loading />
+    }
+
     return (
       <div className='flex flex-col space-y-5'>
       <button onClick={() => router.back()} className='flex space-x-5 items-center'>
@@ -95,8 +102,13 @@ const Page = () => {
           </div>
           <MonitorWalletTable file={walletOverview?.data} />
             {open && (
-        <div className="absolute top-[5.5em] right-0 bg-[#060853] bottom-0 w-[20rem] h-screen p-7 transition-all duration-500 ease-in-out">
-          <div></div>
+        <div className="absolute top-[5.5em] right-0 text-white bg-[#060853] bottom-0 w-[20rem] h-screen p-7 transition-all duration-500 ease-in-out">
+          <div className='flex justify-between items-center'>
+            <span className='text-lg font-bold'>Filter</span>
+            <button onclick={() => setOpen(false)}>
+              <IoMdClose className='text-lg text-white'/>
+            </button>
+          </div>
         </div>
       )}
           </>

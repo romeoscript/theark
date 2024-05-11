@@ -3,10 +3,10 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import { useState } from "react";
 import { Layout, Menu, theme, Input, Drawer, Tooltip } from "antd";
-import { CiHome, CiTrophy } from "react-icons/ci";
+import { CiHome, CiTrophy,CiSearch } from "react-icons/ci";
 import { MdOutlineBrightnessHigh } from "react-icons/md";
 import { RiHome2Fill } from "react-icons/ri";
-import { IoRocketSharp, IoWalletOutline } from "react-icons/io5";
+import { IoRocketSharp, IoWalletOutline, IoRemoveOutline } from "react-icons/io5";
 import Link from "next/link";
 import logo from "../../public/assets/logo.svg";
 import { CloseOutlined, SearchOutlined } from "@ant-design/icons";
@@ -65,7 +65,7 @@ export default function RootLayout({ children }) {
                   mode="horizontal"
                   defaultSelectedKeys={["1"]}
                   style={{
-                    width: "45.5%",
+                    width: "46%",
                     padding: 0,
                     borderRadius: 25,
                     borderColor: "white",
@@ -97,30 +97,16 @@ export default function RootLayout({ children }) {
                   </Menu.Item>
                 </Menu>
 
-                <div className="pr-20">
-                  <Input
-                    placeholder="Search wallet/token"
-                    onChange={(e) => TriggerFilterDrawer(e)}
-                    value={searchText}
-                    placeholderTextColor="white"
-                    style={{
-                      backgroundColor: "#FFFFFF1A",
-                      alignItems: "center",
-                      border: "none",
-                      boxShadow: "none",
-                      padding: 15,
-                      color: "#FFFFFF80",
-                      borderRadius: 12,
-                    }}
-                    prefix={
-                      <SearchOutlined
-                        style={{
-                          color: "#FFFFFF80",
-                          paddingRight: 5,
-                        }}
-                      />
-                    }
+               <div className="relative flex items-center bg-[#FFFFFF1A] gap-1 mr-10 rounded-full pl-6">
+                  <CiSearch className="text-gray-300 text-lg" />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="flex-1 bg-transparent text-white px-4 rounded-md outline-none placeholder-gray-400"
                   />
+                  <div className='bg-gray-200  rounded-md w-[20px] bg-opacity-30 mr-5 flex items-center justify-center'>
+                    <IoRemoveOutline className="transform -rotate-45 text-white text-lg p-1"/>
+                  </div>
                 </div>
               </Header>
 
