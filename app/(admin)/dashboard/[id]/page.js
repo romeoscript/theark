@@ -10,9 +10,7 @@ import { PiSlidersLight } from "react-icons/pi";
 import { useRouter } from 'next/navigation'
 import MonitorWalletTable from '@/components/MonitorWalletTable';
 import { useFetch } from '@/components/Hooks/useFetch';
-import testData from '@/data/portfolio'
 
-console.log('😆', testData)
 
 const onChange = (key) => {
     console.log(key);
@@ -24,7 +22,7 @@ const Page = () => {
     const router = useRouter()
     const [currentTab, setCurrentTab] = useState(0) // 0 -> Monitor Wallet & 1 -> Wallet Overview
     const [open, setOpen] = useState(false)
-    // const { data: walletOverview, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-holdings/${id}`)
+    const { data: walletOverview, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-holdings/${id}`)
 
     // console.log(walletOverview)
 
@@ -95,7 +93,7 @@ const Page = () => {
             <PiSlidersLight size={20} />
           </button>
           </div>
-          <MonitorWalletTable file={testData?.data} />
+          <MonitorWalletTable file={walletOverview?.data} />
             {open && (
         <div className="absolute top-[5.5em] right-0 bg-[#060853] bottom-0 w-[20rem] h-screen p-7 transition-all duration-500 ease-in-out">
           <div></div>

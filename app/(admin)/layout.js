@@ -102,6 +102,7 @@ export default function RootLayout({ children }) {
                     placeholder="Search wallet/token"
                     onChange={(e) => TriggerFilterDrawer(e)}
                     value={searchText}
+                    placeholderTextColor="white"
                     style={{
                       backgroundColor: "#FFFFFF1A",
                       alignItems: "center",
