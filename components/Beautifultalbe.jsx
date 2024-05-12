@@ -30,28 +30,34 @@ const columns = [
     title: 'SMW Holdings (USD)',
     dataIndex: 'smw_holdings_usd',
     key: 'smw_holdings_usd',
-    render: (value) => `$${value.toFixed(2)}`,
+    // render: (value) => `$${value.toFixed(2)}`,
   },
   {
     title: 'PRICE(USD)',
     dataIndex: 'usd_price',
     key: 'usd_price',
-    render: (value) => (value ? `$${value.toFixed(5)}` : 'N/A'),
+    // render: (value) => (value ? `$${value.toFixed(5)}` : 'N/A'),
   },
   {
     title: 'CONTRACT STATUS',
     dataIndex: 'verified_contract',
     key: 'verified_contract',
     render: (verified) => (
-      <div>
-        verified ? <Tag color="green">Verified</Tag> : <Tag color="red">Unverified</Tag>
-        <span>View address <CiShare1 /></span>
+      <div className='space-x-8 flex items-center'>
+        {verified ? <Tag color="green">Verified</Tag> : <Tag color="red">Unverified</Tag>}
+        <span className='flex gap-2 items-center'>
+          <span>
+            View address 
+          </span>
+          <CiShare1 />
+        </span>
       </div>
       ),
   },
 ];
 
 const BeautifulTable = ({ data }) => {
+  console.log(data)
   return (
     <Table
       dataSource={data}

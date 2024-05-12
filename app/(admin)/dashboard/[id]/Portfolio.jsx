@@ -12,70 +12,15 @@ const { Meta } = Card;
 const PortfolioDashboard = ({ address }) => {
     const [displayMode, setDisplayMode] = useState(0) // 0 -> Grid & 1 -> Row
     const [currentPage, setCurrentPage] = useState(1);
-    const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/wallet-overview/${address}`);
+    const { data, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/portfolio-holdings/${address}`);
     const pageSize = 6;
-    const isLoading = datas.isLoading
     const getRowClassName = (record) => {
         return record.possible_spam ? 'spam-row' : '';
     };
-    const data = datas?.data
-    const networth = data?.networth;
-    const portfolioData = data ? data['portfolio-data'] : null;
 
-    const totalPages = portfolioData ? Math.ceil(portfolioData.result.length / pageSize) : 0;
+    const totalPages = data ? Math.ceil(data.data.length / pageSize) : 0;
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = currentPage * pageSize;
-
-
-    const testData = {
-  result: [
-    {
-      symbol: 'AAPL',
-      name: 'AAPL',
-      balance: 5883023.3,
-      portfolio_percentage: 34,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 150.2,
-      usd_value: 150200.0,
-    },
-    {
-      symbol: 'GOOG',
-      name: 'GOOG',
-      balance: 382734.3,
-      portfolio_percentage: 17,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 180.2,
-      usd_value: 372.0,
-    },
-    {
-      symbol: 'META',
-      name: 'META',
-      balance: 38293.3,
-      portfolio_percentage: 19,
-      usd_price_24hr_percent_change: 26,
-      usd_price: 183050.2,
-      usd_value: 37381.0,
-    },
-    {
-      symbol: 'YUN',
-      name: 'YUN',
-      balance: 38293.3,
-      portfolio_percentage: 16,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 7388.2,
-      usd_value: 2939.0,
-    },
-    {
-      symbol: 'TWITTER',
-      name: 'TWITTER',
-      balance: 3829.3,
-      portfolio_percentage: 19,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 74.2,
-      usd_value: 8392.0,
-    },
-  ]
-}
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -83,6 +28,12 @@ const PortfolioDashboard = ({ address }) => {
     if (isLoading) {
         return <Loading />
     }
+
+    const chartData = data?.data?.map((item) => ({
+        symbol: item?.attributes?.fungible_info?.symbol,
+        float: item?.attributes?.quantity?.float
+    }))
+
     return (
         <div>
             <div className='flex gap-4' >
@@ -96,14 +47,13 @@ const PortfolioDashboard = ({ address }) => {
             <Col xs={24} sm={24} md={16}>
                     <Card>
                             <ResponsiveContainer width="100%" height={400}>
-                                <LineChart data={testData?.result}>
+                                <LineChart data={chartData}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="symbol" />
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Line type="monotone" dataKey="usd_price" name="Price (USD)" stroke="#8884d8" />
-                                    <Line type="monotone" dataKey="usd_value" name="Value (USD)" stroke="#82ca9d" />
+                                    <Line type="monotone" dataKey="float" name="Price (USD)" stroke="#8884d8" />
                                 </LineChart>
                             </ResponsiveContainer>
                     </Card>
@@ -127,25 +77,25 @@ const PortfolioDashboard = ({ address }) => {
                         displayMode ? (
                             <div className='my-[1rem]'>
                 <Row gutter={[16, 16]}>
-                    {testData?.result?.slice(startIndex, endIndex).map((token, index) => (
+                    {data?.data?.slice(startIndex, endIndex).map((token, index) => (
                         <Col key={index} span={8} xs={24} sm={24} md={12}>
                             <Card
                                 hoverable
                                 style={{ width: '100%' }}
                             >
-                                <Meta title={`${token.symbol} - ${token.name}`} avatar={<Avatar src={token.thumbnail || token.logo} />} description={`Balance: ${token.balance_formatted}`} />
+                                <Meta title={`${token.attributes?.fungible_info?.symbol} - ${token.attributes?.fungible_info?.name}`} avatar={<Avatar src={token.thumbnail || token.logo} />} />
                                 <Space direction="vertical" style={{ marginTop: '1em', width: '100%' }}>
-                                    <Statistic title="Price (USD)" value={parseFloat(token.usd_price)} precision={6} />
-                                    <Statistic title="Value (USD)" value={parseFloat(token.usd_value)} precision={2} />
+                                    <Statistic title="Price (USD)" value={parseFloat(token?.attributes?.price)} precision={6} />
+                                    <Statistic title="Value (USD)" value={parseFloat(token?.attributes?.value)} precision={2} />
                                     <Statistic
                                         title="Portfolio Percentage"
-                                        value={parseFloat(token.portfolio_percentage)}
+                                        value={parseFloat(token?.attributes?.quantity?.decimals)}
                                         precision={4}
                                         suffix="%"
                                     />
                                     <Statistic
                                         title="24hr % Change"
-                                        value={parseFloat(token.usd_price_24hr_percent_change)}
+                                        value={parseFloat(token?.attributes?.quantity?.decimalse)}
                                         precision={2}
                                         suffix="%"
                                     />
@@ -165,29 +115,28 @@ const PortfolioDashboard = ({ address }) => {
                         ) : (
                              <Col span={24}>
                         <Table
-                            dataSource={testData?.result}
+                            dataSource={data?.data}
                             rowKey="token_address"
                             rowClassName={getRowClassName}
                             pagination={{ pageSize: 10 }}
                             size="small"
                             style={{ maxWidth: '100%', overflowX: 'auto' }}
-                        >
-                            <Table.Column title="Token" dataIndex="symbol" key="symbol" />
-                            <Table.Column title="Name" dataIndex="name" key="name" />
-                            <Table.Column title="Balance" dataIndex="balance_formatted" key="balance" />
-                            <Table.Column title="Price (USD)" dataIndex="usd_price" key="usd_price" />
-                            <Table.Column title="Value (USD)" dataIndex="usd_value" key="usd_value" />
+                        >price
+                            <Table.Column title="Token" render={(text, record) => <span>{record?.attributes?.fungible_info?.symbol}</span>} />
+                            <Table.Column title="Name" render={(text, record) =>   <span>{record?.attributes?.fungible_info?.name}</span> }/>
+                            <Table.Column title="Price (USD)" render={(text, record) => <span>{record?.attributes?.price}</span>}/>
+                            <Table.Column title="Value (USD)" render={(text, record) => <span>{record?.attributes?.value}</span> }/>
                             <Table.Column
                                 title="Portfolio Percentage"
                                 dataIndex="portfolio_percentage"
                                 key="portfolio_percentage"
-                                render={(text) => <span style={{ color: parseFloat(text) > 50 ? 'green' : 'red' }}>{text}%</span>}
+                                render={(text, record) => <span style={{ color: parseFloat(text) > 50 ? 'green' : 'red' }}>{record?.attributes?.quantity?.decimals}%</span>}
                             />
                             <Table.Column
                                 title="24hr % Change"
                                 dataIndex="usd_price_24hr_percent_change"
                                 key="usd_price_24hr_percent_change"
-                                render={(text) => <span style={{ color: parseFloat(text) > 0 ? 'green' : 'red' }}>{text}%</span>}
+                                render={(text, record) => <span style={{ color: parseFloat(text) > 0 ? 'green' : 'red' }}>{record?.attributes?.quantity?.decimals}%</span>}
                             />
                         </Table>
                     </Col>

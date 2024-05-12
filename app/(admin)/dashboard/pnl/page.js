@@ -4,8 +4,6 @@ import { Card, Row, Col, Statistic, Table, Space, Avatar, Pagination } from 'ant
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '@/components/Hooks/useFetch';
 import Loading from '@/components/Loading';
-import { Watermark } from 'react-watermark-component';
-import watermarkLogo from '../../../../public/assets/logo.svg'
 import { LuLayoutGrid } from "react-icons/lu";
 import { CiCircleList } from "react-icons/ci";
 const { Meta } = Card;
@@ -37,56 +35,6 @@ const Page = () => {
     if (isLoading) {
         return <Loading />
     }
-
-    const testData = {
-  result: [
-    {
-      symbol: 'AAPL',
-      name: 'AAPL',
-      balance: 5883023.3,
-      portfolio_percentage: 34,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 150.2,
-      usd_value: 150200.0,
-    },
-    {
-      symbol: 'GOOG',
-      name: 'GOOG',
-      balance: 382734.3,
-      portfolio_percentage: 17,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 180.2,
-      usd_value: 372.0,
-    },
-    {
-      symbol: 'META',
-      name: 'META',
-      balance: 38293.3,
-      portfolio_percentage: 19,
-      usd_price_24hr_percent_change: 26,
-      usd_price: 183050.2,
-      usd_value: 37381.0,
-    },
-    {
-      symbol: 'YUN',
-      name: 'YUN',
-      balance: 38293.3,
-      portfolio_percentage: 16,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 7388.2,
-      usd_value: 2939.0,
-    },
-    {
-      symbol: 'TWITTER',
-      name: 'TWITTER',
-      balance: 3829.3,
-      portfolio_percentage: 19,
-      usd_price_24hr_percent_change: 12,
-      usd_price: 74.2,
-      usd_value: 8392.0,
-    },
-  ]
-}
 
     return (
         <div>
