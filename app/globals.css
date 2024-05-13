@@ -79,6 +79,29 @@ body {
   background: white
 }
 
+/* Define styles for the selected item */
+.ant-menu-horizontal .ant-menu-item.rounded-menu-item {
+  @apply rounded-none; /* Reset any default rounding */
+}
+
+.ant-menu-horizontal .ant-menu-item.rounded-menu-item.ant-menu-item-selected {
+  @apply rounded-md; /* Apply rounding to the selected item */
+}
+
+/* Define styles for the first and last selected items */
+.ant-menu-horizontal .ant-menu-item.rounded-menu-item.ant-menu-item-selected:first-child {
+  @apply rounded-l-full; /* Apply rounding to the left side for the first item */
+}
+
+
+.ant-menu-horizontal .ant-menu-item.new-listings-item {
+  @apply rounded-none; /* Reset any default rounding */
+}
+
+.ant-menu-horizontal .ant-menu-item.new-listings-item.ant-menu-item-selected {
+  @apply rounded-r-full; /* Apply full rounding to the right side */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

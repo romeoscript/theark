@@ -4,6 +4,8 @@ import { Card, Row, Col, Statistic, Table, Space, Avatar, Pagination } from 'ant
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '@/components/Hooks/useFetch';
 import Loading from '@/components/Loading';
+import { LuLayoutGrid } from "react-icons/lu";
+import { CiCircleList } from "react-icons/ci";
 const { Meta } = Card;
 
 
@@ -11,6 +13,7 @@ const Page = () => {
     const datas = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/highest_growth_wallet`)
     const isLoading = datas.isLoading
     const [currentPage, setCurrentPage] = useState(1);
+    const [displayMode, setDisplayMode] = useState(0) // 0 -> Grid & 1 -> Row
     const pageSize = 6;
 
     const getRowClassName = (record) => {
@@ -32,35 +35,59 @@ const Page = () => {
     if (isLoading) {
         return <Loading />
     }
+
     return (
-        <div >
-            <div className='flex gap-4 max-md:flex-col' >
-
+        <div>
+            <div className='flex gap-4 max-md:flex-col flex-col' >
+                <span className='text-4xl font-semibold'>Hightest PnL</span>
                 <Col xs={24} sm={24} md={8}>
-                    <Card>
-                        <Statistic title="Total Networth (USD)" value={parseFloat(networth?.total_networth_usd)} precision={2} />
-                    </Card>
-                </Col>
-                <Col xs={24} sm={24} md={16}>
-                    <Card>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <LineChart data={portfolioData?.result}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="symbol" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Line type="monotone" dataKey="usd_price" name="Price (USD)" stroke="#8884d8" />
-                                <Line type="monotone" dataKey="usd_value" name="Value (USD)" stroke="#82ca9d" />
-                            </LineChart>
-                        </ResponsiveContainer>
+                    <Card
+                    >
+                        {/* <Statistic title="Total Networth (USD)" value={parseFloat(networth?.total_networth_usd)} precision={2} /> */}
+                        <Statistic title="Total Networth (USD)" value={parseFloat(34938234.73483)} precision={2} />
+
                     </Card>
                 </Col>
 
+            </div> 
+            <div className='my-10 w-full flex justify-center items-center'>
+            <Col xs={24} sm={24} md={16}>
+                    <Card>
+                            <ResponsiveContainer width="100%" height={400}>
+                                <LineChart data={testData?.result}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="symbol" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Line type="monotone" dataKey="usd_price" name="Price (USD)" stroke="#8884d8" />
+                                    <Line type="monotone" dataKey="usd_value" name="Value (USD)" stroke="#82ca9d" />
+                                </LineChart>
+                            </ResponsiveContainer>
+                    </Card>
+                </Col>
             </div>
-            <div className='my-[1rem]'>
+
+            
+            <div className='w-[90%] m-auto'>
+                <Row gutter={[16, 16]}> 
+                    <div className='flex justify-between items-center w-full px-8'>
+                        <h2 className='text-center font-bold text-3xl my-[1rem]'>Portfolio Data</h2>
+                        <button onClick={() => setDisplayMode(!displayMode)}>
+                           {!displayMode ? <LuLayoutGrid size={24}/> : <CiCircleList size={24} /> } 
+                        </button>
+                    </div>
+                    <div className='flex space-x-2 items-center'>
+                    <label className="input input-bordered flex text-black items-center bg-white gap-2 w-[300px]">
+                    <input type="text" value={''} onChange={e => {}} className="grow " placeholder="Search wallet/token" />
+                    <svg color='black' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                    </label>
+                    </div>
+                    {
+                        displayMode ? (
+                            <div className='my-[1rem]'>
                 <Row gutter={[16, 16]}>
-                    {portfolioData?.result?.slice(startIndex, endIndex).map((token, index) => (
+                    {testData?.result?.slice(startIndex, endIndex).map((token, index) => (
                         <Col key={index} span={8} xs={24} sm={24} md={12}>
                             <Card
                                 hoverable
@@ -91,17 +118,14 @@ const Page = () => {
                     style={{ marginTop: '16px', textAlign: 'center' }}
                     current={currentPage}
                     pageSize={pageSize}
-                    total={portfolioData?.result?.length}
+                    total={testData?.result?.length}
                     onChange={handlePageChange}
                 />
             </div>
-            <div className='w-[90%] m-auto'>
-                <Row gutter={[16, 16]}>
-                    <h2 className='text-center font-bold text-3xl mx-auto my-[1rem]'>Portfolio Data</h2>
-
-                    <Col span={24}>
+                        ) : (
+                             <Col span={24}>
                         <Table
-                            dataSource={portfolioData?.result}
+                            dataSource={testData?.result}
                             rowKey="token_address"
                             rowClassName={getRowClassName}
                             pagination={{ pageSize: 10 }}
@@ -127,6 +151,10 @@ const Page = () => {
                             />
                         </Table>
                     </Col>
+                        )
+                    }
+
+                   
 
                 </Row>
             </div>
