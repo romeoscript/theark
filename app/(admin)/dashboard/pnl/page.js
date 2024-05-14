@@ -43,7 +43,7 @@ const Page = () => {
     return (
       <div className='flex flex-col space-y-5'>
             <span className='text-lg font-bold'>Hightest PnL</span>
-          <PortfolioDashboard address='0xcd443a0950f1842c7be8a6c31fcebf2ff22ebedc' />
+          <PortfolioDashboard address='0xcd443a0950f1842c7be8a6c31fcebf2ff22ebedc' /> {/** To change no pNl endpoint */}
       </div>
     )
 }
