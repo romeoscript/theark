@@ -8,52 +8,38 @@ const CustomImage = ({ src }) => <img src={src} alt="Logo" className='w-10 h-10 
 const columns = [
   {
     title: 'TOKEN NAME',
-    dataIndex: 'token_name',
-    key: 'token_name',
-  },
-  {
-    title: 'SMW HOLDERS',
-    dataIndex: 'smw_holders',
-    key: 'smw_holders',
-  },
-  {
-    title: 'SMW PORTFOLIO AVE.',
-    dataIndex: 'swm_portfolio_ave',
-    key: 'swm_portfolio_ave',
+    dataIndex: 'name',
+    key: 'name',
     render: (text, record) => (
-        <div>
-            {record.logo ? <img src={record.logo} alt={text} className='w-10 h-10 rounded-full' /> : <div className='w-10 h-10 bg-gray-200 rounded-full'></div>}
+        <div className='flex items-center gap-3'>
+            {record.logo_url ? <img src={record.logo_url} alt={text} className='w-10 h-10 rounded-full' /> : <div className='w-10 h-10 bg-gray-200 rounded-full'></div>}
+            <span>{text}</span>
         </div>
     )
   },
   {
+    title: 'SMW HOLDERS',
+    dataIndex: 'holders_count',
+    key: 'holders_count',
+  },
+  {
+    title: 'SMW PORTFOLIO AVE.',
+    dataIndex: 'holdings_quantity',
+    key: 'holdings_quantity',
+    
+  },
+  {
     title: 'SMW Holdings (USD)',
-    dataIndex: 'smw_holdings_usd',
-    key: 'smw_holdings_usd',
-    // render: (value) => `$${value.toFixed(2)}`,
+    dataIndex: 'holdings_usd',
+    key: 'holdings_usd',
+    render: (value) => `$${value.toFixed(2)}`,
   },
   {
-    title: 'PRICE(USD)',
-    dataIndex: 'usd_price',
-    key: 'usd_price',
-    // render: (value) => (value ? `$${value.toFixed(5)}` : 'N/A'),
-  },
-  {
-    title: 'CONTRACT STATUS',
-    dataIndex: 'verified_contract',
-    key: 'verified_contract',
-    render: (verified) => (
-      <div className='space-x-8 flex items-center'>
-        {verified ? <Tag color="green">Verified</Tag> : <Tag color="red">Unverified</Tag>}
-        <span className='flex gap-2 items-center'>
-          <span>
-            View address 
-          </span>
-          <CiShare1 />
-        </span>
-      </div>
-      ),
-  },
+    title: 'Price (USD)',
+    dataIndex: 'holdings_usd',
+    key: 'holdings_usd',
+    render: (value) => `$${value.toFixed(2)}`,
+  }
 ];
 
 const BeautifulTable = ({ data }) => {

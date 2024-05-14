@@ -49,7 +49,6 @@ const tokens = [
   }
 ]
 
-
 const onChange = (key) => {
     console.log(key);
 };
@@ -67,7 +66,40 @@ const Page = () => {
       contractStatus: false
     })
 
-
+const tokens = [
+  {
+    name: 'ETH',
+    selected: false
+  },
+  {
+    name: 'SOL',
+    selected: false
+  },
+  {
+    name: 'XRP',
+    selected: false
+  },
+  {
+    name: 'BTC',
+    selected: false
+  },
+  {
+    name: 'ETH',
+    selected: false
+  },
+  {
+    name: 'SOL',
+    selected: false
+  },
+  {
+    name: 'XRP',
+    selected: false
+  },
+  {
+    name: 'BTC',
+    selected: false
+  }
+]
     const onClose = () => {
       setOpen(false)
     } 

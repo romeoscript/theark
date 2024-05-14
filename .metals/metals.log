@@ -1,0 +1,11 @@
+2024.05.14 09:44:42 INFO  Started: Metals version 1.3.0 in folders '/home/henry/Desktop/projects/theark' for client Visual Studio Code 1.89.1.[0m
+2024.05.14 09:44:43 INFO  time: initialize in 0.32s[0m
+SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [scribe.slf4j.ScribeServiceProvider@4ac6e0a6]
+SLF4J: Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@3b74bc24]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [scribe.slf4j.ScribeServiceProvider@4ac6e0a6]
+2024.05.14 09:44:55 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.[0m
+2024.05.14 09:44:59 WARN  no build tool detected in workspace '/home/henry/Desktop/projects/theark'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+2024.05.14 09:44:59 WARN  Build server is not auto-connectable.[0m
+2024.05.14 10:10:41 INFO  logging to files /home/henry/Desktop/projects/theark/.metals/metals.log[0m

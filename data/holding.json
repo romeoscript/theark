@@ -1,0 +1,80 @@
+[
+  {
+    "chain_id": "arbitrum",
+    "token_address": null,
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "logo_url": "https://token-icons.s3.amazonaws.com/eth.png",
+    "decimals": 18,
+    "holdings_quantity": 337325.883414343,
+    "holdings_usd": 6446922.27249666,
+    "displayable": true,
+    "is_trash": false,
+    "holders_count": 99,
+    "holders_addresses": [
+      "0xcd443a0950f1842c7be8a6c31fcebf2ff22ebedc",
+      "0xdf3b896a89f7e1af7dca82216624ae20d48d5e55",
+      "0x29ad4c1f3fcfcebbcf2a69c412e187edfbdbac1d",
+      "0x67260767a04066c1259171be81265faf0d1b72d0",
+      "0x287e2c76aab4720786076c3deedd7dd386092050",
+      "0xfdc3d1f88805ccdc18340ab8a819d84e307bfad2",
+      "0x6c7dd55ad86ff808b932c66241f0b3dd982f1346",
+      "0x941111f2be8ed9b4e0ce7cea556c8e1eee7077c2",
+      "0x162c6c832611dabb9ac90f8f7902a78b3361bbad",
+      "0x88b54fbf9395811ccc0a721dfa1f46332eac9032"
+    ]
+  },
+  {
+    "chain_id": "binance-smart-chain",
+    "token_address": "0xcc42724c6683b7e57334c4e856f4c9965ed682bd",
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "logo_url": "https://token-icons.s3.amazonaws.com/0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0.png",
+    "decimals": 18,
+    "holdings_quantity": 55486.2064683394,
+    "holdings_usd": 37834.2839532077,
+    "displayable": true,
+    "is_trash": false,
+    "holders_count": 58,
+    "holders_addresses": [
+      "0xdf3b896a89f7e1af7dca82216624ae20d48d5e55",
+      "0x287e2c76aab4720786076c3deedd7dd386092050",
+      "0xfdc3d1f88805ccdc18340ab8a819d84e307bfad2",
+      "0x88b54fbf9395811ccc0a721dfa1f46332eac9032",
+      "0xa0b6253d7787ae282749b71fd4ef5d5c9d8a9e87",
+      "0x120051a72966950b8ce12eb5496b5d1eeec1541b",
+      "0x54be3a794282c030b15e43ae2bb182e14c409c5e",
+      "0x55038f72943144983baab03a0107c9a237bd0da9",
+      "0xd6bbc0a9dd616c806e05e281955982f2f561bf3b",
+      "0xb6478f66defff486e92722c1ae5873d663d8af50",
+      "0x03770b07c5c315722c5866e64cde04e6e5793714"
+    ]
+  },
+  {
+    "chain_id": "arbitrum",
+    "token_address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    "symbol": "WETH",
+    "name": "Wrapped Ethereum",
+    "logo_url": "https://token-icons.s3.amazonaws.com/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png",
+    "decimals": 18,
+    "holdings_quantity": 901.781663444295,
+    "holdings_usd": 2794202.07740839,
+    "displayable": true,
+    "is_trash": false,
+    "holders_count": 55,
+    "holders_addresses": [
+      "0xdf3b896a89f7e1af7dca82216624ae20d48d5e55",
+      "0x287e2c76aab4720786076c3deedd7dd386092050",
+      "0xfdc3d1f88805ccdc18340ab8a819d84e307bfad2",
+      "0xa0b6253d7787ae282749b71fd4ef5d5c9d8a9e87",
+      "0x33cc1327df4a7784d5194eb437aec62ff816c7b0",
+      "0x7431931094e8bae1ecaa7d0b57d2284e121f760e",
+      "0x992d72b8474184ff6f2f0d1da4985253f4f6a63b",
+      "0x7a9803f2450e948f63bba32834792ce7aab02515",
+      "0x54be3a794282c030b15e43ae2bb182e14c409c5e",
+      "0x4b42cb98ff7cda7b87ec532a519cdc3741035f60",
+      "0x55038f72943144983baab03a0107c9a237bd0da9",
+      "0x0c69f72986f8f4495615015bb838bb2c9299192b"
+    ]
+  }
+]

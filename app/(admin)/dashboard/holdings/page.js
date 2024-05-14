@@ -3,6 +3,7 @@ import BeautifulTable from '@/components/Beautifultalbe'
 import { useFetch } from '@/components/Hooks/useFetch'
 import Loading from '@/components/Loading'
 import React from 'react'
+import holdings from '@/data/holding.json'
 
 const Page = () => {
     const { data, isLoading } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/top-holdings`)
@@ -16,7 +17,7 @@ const Page = () => {
   return (
     <div className='w-[90%] m-auto '>
         <h2 className='text-2xl text-black text-start font-bold my-[2rem]'>Top Holdings</h2>
-      <BeautifulTable data={data} />
+      <BeautifulTable data={holdings} />
     </div>
   )
 }
