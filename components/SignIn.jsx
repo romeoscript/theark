@@ -26,7 +26,7 @@ const SignIn = () => {
                 <Input.Password placeholder="input password" className='p-2'/>
             </div>
             <button className='w-[50%] bg-gradient p-3 rounded-full text-white'>Sign in</button>
-            <span className='text-center text-[#808080] text-md w-[75%]'>By clicking on the "Sign Up" button you agree to the <Link href='/'>Terms & Condition</Link> of that has been laid down by The Ark</span>
+            <span className='text-center text-[#808080] text-md w-[75%]'>By clicking on the &quot;Sign In&ldquo; button you agree to the <Link href='/'>Terms & Condition</Link> of that has been laid down by The Ark</span>
     </>
   )
 }

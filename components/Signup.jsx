@@ -26,7 +26,7 @@ const Signup = ({ setVerifyEmailModal, setModalOpen }) => {
               setModalOpen(false)
               setVerifyEmailModal(true)
             }} className='w-[50%] bg-gradient p-3 rounded-full text-white'>Sign up</button>
-            <span className='text-center text-[#808080] text-md w-[75%]'>By clicking on the "Sign Up" button you agree to the <Link href='/'>Terms & Condition</Link> of that has been laid down by The Ark</span>
+            <span className='text-center text-[#808080] text-md w-[75%]'>By clicking on the &quot;Sign Up&ldquo; button you agree to the <Link href='/'>Terms & Condition</Link> of that has been laid down by The Ark</span>
     </>
   )
 }

@@ -18,7 +18,7 @@ const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [signUpComplete, setSignUpComplete] = useState(false)
     const [verifyEmailModal, setVerifyEmailModal] = useState(false)
-    const [profileModal, setProfileModal] = useState(true)
+    const [profileModal, setProfileModal] = useState(false)
     
     return (
         <div className='md:h-screen h-[60vh]  herobg flex   items-center relative justify-center' style={{ backgroundImage: `url(${herobg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -86,7 +86,7 @@ const Hero = () => {
                     <div className='flex flex-col justify-center items-center w-full h-full space-y-7'>
                         <div className='space-y-3 flex flex-col justify-center items-center'>
                             <span className='text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#1AABF4] to-[#383EE5]'>Verify Email</span>
-                            <span className='w-[70%] text-center'>We've sent a verification link to @joe****@gmail.com Click on it to continue the Sign Up process</span>
+                            <span className='w-[70%] text-center'>We&quot;ve sent a verification link to @joe****@gmail.com Click on it to continue the Sign Up process</span>
                         </div>
                         <button className='w-[50%] bg-gradient p-3 rounded-full text-white'>Return home</button>
                     </div>
