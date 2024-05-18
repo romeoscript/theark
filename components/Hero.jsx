@@ -18,7 +18,7 @@ const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [signUpComplete, setSignUpComplete] = useState(false)
     const [verifyEmailModal, setVerifyEmailModal] = useState(false)
-    const [profileModal, setProfileModal] = useState(true)
+    const [profileModal, setProfileModal] = useState(false)
     
     return (
         <div className='md:h-screen h-[60vh]  herobg flex   items-center relative justify-center' style={{ backgroundImage: `url(${herobg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
