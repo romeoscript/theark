@@ -26,7 +26,7 @@ const Nav = () => {
                     <a href="/about">Pricing</a>
                 </li>
             </ul>
-            <Link href='/Dashboard'>
+            <Link href='/dashboard'>
                 <button className='button-linear px-[2rem] py-[1rem] rounded-full text-center flex items-center justify-center'>Explore</button>
             </Link>
             <div className=' text-3xl relative'>
